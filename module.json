@@ -1,0 +1,18 @@
+{
+    "id": "inventory-manager",
+    "title": "Szotski's Shop and Loot Inventory Manager",
+    "description": "Manage your shop and loot inventories with this simple and powerful module.",
+    "authors": [
+        {
+            "name": "Tim 'Szotski' Szot"
+        }
+    ],
+    "version": "1.0.0",
+    "compatibility": {
+        "minimum": "11",
+        "verified": "11"
+    },
+    "esmodules": [
+        "modules/inventory_manager.js"
+    ]
+}
