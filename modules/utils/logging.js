@@ -1,18 +1,56 @@
 import {Constants} from "../values.js";
 
-export function consoleLogging(message, severity) {
-    let formattedMessage = `${Constants.MODULE_NAME} | ${message}`;
+/**
+ * Handles logging to both console and UI with some validation.
+ * 
+ * @param {String} type 
+ * @param {String} severity 
+ * @param {String} message 
+ */
+export function log(type, severity, message) {
+    let formattedMessage = `${Constants.module.name} | ${message}`;
 
-    if (!Constants.validLogSeverities.includes(severity)) {
-        console.error(`${Constants.MODULE_NAME} | Invalid Severity! Message follows as a log`);
-        console.log(formattedMessage);
-    } else if (severity === Constants.LOG_INFO) {
-        console.info(formattedMessage);
-    } else if (severity === Constants.LOG_LOG) {
-        console.log(formattedMessage);
-    } else if (severity === Constants.LOG_WARNING) {
-        console.warn(formattedMessage);
-    } else if (severity === Constants.LOG_ERROR) {
-        console.error(formattedMessage);
+    switch(type) {
+        case Constants.validLogTypes.console:
+            switch(severity) {
+                case Constants.validLogSeverities.log:
+                    console.log(formattedMessage);
+                    break;
+                case Constants.validLogSeverities.info:
+                    console.info(formattedMessage);
+                    break;
+                case Constants.validLogSeverities.warning:
+                    console.warning(formattedMessage);
+                    break;
+                case Constants.validLogSeverities.error:
+                    console.error(formattedMessage);
+                    break;
+                default:
+                    console.error(`${Constants.module.name} | Invalid Severity! ${type} message follows as a log`);
+                    console.log(formattedMessage);
+            }
+            break;
+        case Constants.validLogTypes.ui:
+            switch(severity) {
+                case Constants.validLogSeverities.log:
+                    ui.notifications.log(formattedMessage);
+                    break;
+                case Constants.validLogSeverities.info:
+                    ui.notifications.info(formattedMessage);
+                    break;
+                case Constants.validLogSeverities.warning:
+                    ui.notifications.warning(formattedMessage);
+                    break;
+                case Constants.validLogSeverities.error:
+                    ui.notifications.error(formattedMessage);
+                    break;
+                default:
+                    console.error(`${Constants.module.name} | Invalid Severity! ${type} message follows as a log`);
+                    ui.notifications.log(formattedMessage);
+            }
+            break;
+        default:
+            console.error(`${Constants.module.name} | Invalid type! Message follows as a console log`);
+            console.log(formattedMessage);
     }
 }
