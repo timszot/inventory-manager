@@ -1,4 +1,5 @@
-import {Constants} from "./values.js";
-import {consoleLogging} from "./utils/logging.js";
+import {registerSettings} from "./settings.js";
 
-consoleLogging("Initial load complete", Constants.LOG_INFO);
+Hooks.on("ready", async function () {
+    registerSettings();
+});
