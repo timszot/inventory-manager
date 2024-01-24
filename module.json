@@ -1,6 +1,6 @@
 {
-    "id": "inventory-manager",
-    "title": "Szotski's Shop and Loot Inventory Manager",
+    "id": "item-emporium",
+    "title": "Szotski's Item Emporium",
     "description": "Manage your DnD5e shop and loot inventories with this simple and powerful module.",
     "authors": [
         {
@@ -15,7 +15,17 @@
     "relationships": {
         "id": "dnd5e"
     },
+    "languages": [
+        {
+            "lang": "en",
+            "name": "English",
+            "path": "languages/en.json"
+        }
+    ],
     "esmodules": [
-        "modules/inventory_manager.js"
+        "modules/item_emporium.js"
+    ],
+    "styles": [
+        "styles/item_emporium.css"
     ]
 }
