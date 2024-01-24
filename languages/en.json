@@ -1,0 +1,33 @@
+{
+    "SZOTSKI_INV_MANAGER": {
+        "SETTINGS": {
+            "POTION": {
+                "NAME": "Potion Compendium",
+                "SETTING_HINT": "Name of the compendium which contains all possible potions."
+            },
+            "SPELL": {
+                "NAME": "Spell Compendium",
+                "SETTING_HINT": "Name of the compendium which contains all possible spells."
+            },
+            "MAGIC_ITEM": {
+                "NAME": "Wonderous Item Compendium",
+                "SETTING_HINT": "Name of the compendium which contains all possible magic items."
+            },
+            "ARMOR": {
+                "NAME": "Armor Compendium",
+                "SETTING_HINT": "Name of the compendium which contains all possible armor."
+            },
+            "WEAPON": {
+                "NAME": "Weapon Compendium",
+                "SETTING_HINT": "Name of the compendium which contains all possible weapons."
+            },
+            "MUNDANE": {
+                "NAME": "Mundane Item Compendium",
+                "SETTING_HINT": "Select compendium that contains mundane or non-magic items."
+            }
+        },
+        "UI": {
+            "BUTTON_TITLE": "Szotski's Item Emporium"
+        }
+    }
+}

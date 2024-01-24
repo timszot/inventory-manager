@@ -1,26 +1,31 @@
-import {Constants} from "./values.js";
-import {log} from "./utils/logging.js";
-import {getCompendiumsOfType} from "./utils/compendium.js";
+import { Constants } from "./values.js";
+import { log } from "./utils/logging.js";
+import { getCompendiumsOfType } from "./utils/compendium.js";
 
 /**
  * Register all settings
  */
 export function registerSettings() {
-    // First register all the settings for any user defineable compendiums
-    let userCompendiums = Constants.user_defined_compendiums;
-    Object.values(userCompendiums).forEach(compendium => {
-        log(Constants.validLogTypes.console, Constants.validLogSeverities.info, `Registering ${compendium.setting} setting`)
-        game.settings.register(Constants.module.id, compendium.setting,
+    let compendiumList = getCompendiumsOfType(Constants.VALID_FOUNDRY_COMPENDIUM_TYPES.ITEM);
+
+    Object.keys(Constants.COMPENDIUM_SETTINGS).forEach(key => {
+        let name = game.i18n.localize(`SZOTSKI_INV_MANAGER.SETTINGS.${key}.NAME`);
+        let settingHint = game.i18n.localize(`SZOTSKI_INV_MANAGER.SETTINGS.${key}.SETTING_HINT`);
+        log(Constants.VALID_LOG_TYPES.CONSOLE, Constants.VALID_LOG_SEVERITIES.INFO, `Registering ${Constants.COMPENDIUM_SETTINGS[key]} setting`)
+
+        game.settings.register(Constants.MODULE.ID, Constants.COMPENDIUM_SETTINGS[key],
             {
-                name: compendium.name,
-                hint: compendium.setting_hint,
+                name: name,
+                hint: settingHint,
                 scope: "client",
                 requiresReload: true,
                 type: String,
-                choices: getCompendiumsOfType(Constants.validCompendiumTypes.item),
+                choices: compendiumList,
                 config: true,
                 default: ""
             }
         );
     });
+
+    log(Constants.VALID_LOG_TYPES.CONSOLE, Constants.VALID_LOG_SEVERITIES.INFO, "Settings registered");
 }

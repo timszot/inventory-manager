@@ -2,65 +2,73 @@
  * Declare and organize constant values
  */
 export class Constants {
-    static module = {
-        id: "inventory-manager",
-        name: "Szotskis Inventory Management",
-    };
-
-    static validLogTypes = {
-        console: "console",
-        ui: "ui"
-    };
-
-    static validLogSeverities = {
-        error: "error",
-        info: "info",
-        log: "log",
-        warning: "warning"
-    };
-
-    static validCompendiumTypes = {
-        actor: "actor",
-        item: "item",
-        card_stack: "card stack",
-        journal_entry: "journal entry",
-        macro: "macro",
-        playlist: "playlist",
-        rollable_table: "rollable table",
-        scene: "scene",
-        adventure: "adventure"
-    };
-
-    static user_defined_compendiums = {
-        potion: {
-            name: "Potion Compendium",
-            setting: "PotionCompendium",
-            setting_hint: "Select compendium that contains potions."
-        },
-        spell: {
-            name: "Spell Compendium",
-            setting: "SpellCompendium",
-            setting_hint: "Select compendium that contains spells."
-        },
-        magic_item: {
-            name: "Magic Item Compendium",
-            setting: "MagicItemCompendium",
-            setting_hint: "Select compendium that contains magic items."
-        },
-        armor: {
-            name: "Armor Compendium",
-            setting: "ArmorCompendium",
-            setting_hint: "Select compendium that contains armor."
-        },
-        weapon: {
-            name: "Weapon Compendium",
-            setting: "WeaponCompendium",
-            setting_hint: "Select compendium that contains weapons."
-        },
-        mundane: {
-            name: "Mundane Compendium",
-            setting: "MundaneCompendium",
-            setting_hint: "Select compendium that contains mundane or non-magic items."
+    static MODULE = {
+        ID: "item-emporium",
+        NAME: "Szotskis Item Emporium",
+        FLAGS: {
+            ITEM_COLLECTION: "item-collection"
         }
+    };
+
+    static VALID_LOG_TYPES = {
+        CONSOLE: "console",
+        UI: "ui"
+    };
+
+    static VALID_LOG_SEVERITIES = {
+        ERROR: "error",
+        INFO: "info",
+        LOG: "log",
+        WARNING: "warning"
+    };
+
+    static VALID_FOUNDRY_COMPENDIUM_TYPES = {
+        ACTOR: "actor",
+        ITEM: "item",
+        CARD_STACK: "card stack",
+        JOURNAL_ENTRY: "journal entry",
+        MACRO: "macro",
+        PLAYLIST: "playlist",
+        ROLLABLE_TABLE: "rollable table",
+        SCENE: "scene",
+        ADVENTURE: "adventure"
+    };
+
+    static COMPENDIUM_SETTINGS = {
+        POTION: "PotionCompendium",
+        SPELL: "SpellCompendium",
+        MAGIC_ITEM: "MagicItemCompendium",
+        ARMOR: "ArmorCompendium",
+        WEAPON: "WeaponCompendium",
+        MUNDANE: "MundaneCompendium"
+    };
+
+    static GAME_SYSTEMS = {
+        DND5E: {
+            RARITIES: {
+                COMMON: "Common",
+                UNCOMMON: "Uncommon",
+                RARE: "Rare",
+                VARY_RARE: "Very Rare",
+                LEGENDARY: "Legendary",
+                ARTIFACT: "Artifact"
+            },
+            SPELL_LEVELS: {
+                0: "Cantrip",
+                1: "1st Level",
+                2: "2nd Level",
+                3: "3rd Level",
+                4: "4th Level",
+                5: "5th Level",
+                6: "6th Level",
+                7: "7th Level",
+                8: "8th Level",
+                9: "9th Level"
+            }
+        }
+    };
+
+    static TEMPLATES = {
+        ITEM_EMPORIUM: `modules/${this.MODULE_ID}/templates/item_emporium.hbs`
     };
 }
