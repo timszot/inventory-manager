@@ -6,7 +6,7 @@ export class Constants {
         ID: "item-emporium",
         NAME: "Szotskis Item Emporium",
         FLAGS: {
-            ITEM_COLLECTION: "item-collection"
+            ITEM_COLLECTIONS: "item-collections"
         }
     };
 
