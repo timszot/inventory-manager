@@ -1,4 +1,4 @@
-import { Constants } from "./values";
+import { Constants } from "./values.js";
 
 /**
  * A collection of items, such as a store inventory or a loot chest. Stored in the user data.
@@ -8,11 +8,14 @@ import { Constants } from "./values";
  * @property {string} id - A unique ID to identify this collection
  * @property {string} name - A nice name for the collection
  * @property {Array} compendiums - List of compendiums the items were generated from
- * @property {{{item_id: string, item_name: string, item_compendium: string, quantity: int, price: float}}} inventory - Item data that forms the inventory
+ * @property {{{item_id: string, item_name: string, quantity: int, price: float}}} inventoryData - Item data that forms the inventory
  */
-class ItemEmporiumCollectionData {
+export class ItemEmporiumCollectionData {
+    /**
+     * Get all ItemEmporiumCollections in a reduced list
+     */
     static get allItemCollections() {
-        return allItemCollections = game.users.reduce((accumulator, user) => {
+        return game.users.reduce((accumulator, user) => {
             const userItemCollections = this.getItemCollectionsForUser(user.id);
 
             return {
@@ -30,7 +33,7 @@ class ItemEmporiumCollectionData {
      * @returns {ItemEmporiumCollection}
      */
     static getItemCollectionsForUser(userId) {
-        return game.client.get(userId)?.getFlag(Constants.MODULE.ID, Constants.MODULE.FLAGS.ITEM_COLLECTION);
+        return game.users.get(userId)?.getFlag(Constants.MODULE.ID, Constants.MODULE.FLAGS.ITEM_COLLECTIONS);
     }
 
     /**
@@ -46,16 +49,34 @@ class ItemEmporiumCollectionData {
     static createItemCollection(userId, name, compendiums, inventoryData) {
         const newItemCollection = {
             id: foundry.utils.randomID(16),
-            name: name,
-            compendiums: compendiums,
-            inventoryData: inventoryData,
+            name,
+            compendiums,
+            inventoryData,
             userId
         };
-
         const newItemCollections = {
             [newItemCollection.id]: newItemCollection
         };
 
-        return game.users.get(userId)?.setFlag(Constants.MODULE.ID, Constants.MODULE.FLAGS.ITEM_COLLECTION, newItemCollections);
+        return game.users.get(userId)?.setFlag(Constants.MODULE.ID, Constants.MODULE.FLAGS.ITEM_COLLECTIONS, newItemCollections);
+    }
+
+    static updateItemCollection(collectionId, updatedItemCollectionData) {
+        const relevantCollection = this.allItemCollections[collectionId];
+        const updatedItemCollection = {
+            [collectionId]: updatedItemCollectionData
+        };
+
+        return game.users.get(relevantCollection.userId)?.setFlag(Constants.MODULE.ID, Constants.MODULE.FLAGS.ITEM_COLLECTIONS, updatedItemCollection);
+    }
+
+    static deleteItemCollection(collectionId) {
+        // Foundry specific syntax required to delete a key from a persisted object in the database
+        const keyDeletion = {
+            [`-=${collectionId}`]: null
+        }
+        const relevantCollection = this.allItemCollections[collectionId];
+
+        return game.users.get(relevantCollection.userId)?.setFlag(Constants.MODULE.ID, Constants.MODULE.FLAGS.ITEM_COLLECTIONS, keyDeletion);
     }
 }
