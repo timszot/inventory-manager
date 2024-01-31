@@ -1,4 +1,4 @@
-import { Constants } from "../values.js";
+import { Constants } from "../constants.js";
 
 /**
  * Handles logging to both console and UI with some validation.
@@ -7,50 +7,50 @@ import { Constants } from "../values.js";
  * @param {String} severity 
  * @param {String} message 
  */
-export function log(type, severity, message) {
-    let formattedMessage = `${Constants.MODULE.NAME} | ${message}`;
+export function log(type, severity, ...args) {
+    let formattedMessage = `${Constants.MODULE.NAME} | `;
 
     switch(type) {
-        case Constants.VALID_LOG_TYPES.CONSOLE:
+        case Constants.LOG_TYPES.CONSOLE:
             switch(severity) {
-                case Constants.VALID_LOG_SEVERITIES.LOG:
-                    console.log(formattedMessage);
+                case Constants.LOG_SEVERITIES.LOG:
+                    console.log(formattedMessage, ...args);
                     break;
-                case Constants.VALID_LOG_SEVERITIES.INFO:
-                    console.info(formattedMessage);
+                case Constants.LOG_SEVERITIES.INFO:
+                    console.info(formattedMessage, ...args);
                     break;
-                case Constants.VALID_LOG_SEVERITIES.WARNING:
-                    console.warning(formattedMessage);
+                case Constants.LOG_SEVERITIES.WARNING:
+                    console.warning(formattedMessage, ...args);
                     break;
-                case Constants.VALID_LOG_SEVERITIES.ERROR:
-                    console.error(formattedMessage);
+                case Constants.LOG_SEVERITIES.ERROR:
+                    console.error(formattedMessage, ...args);
                     break;
                 default:
                     console.error(`${Constants.MODULE.NAME} | Invalid Severity! ${type} message follows as a log`);
-                    console.log(formattedMessage);
+                    console.log(formattedMessage, ...args);
             }
             break;
-        case Constants.VALID_LOG_TYPES.UI:
+        case Constants.LOG_TYPES.UI:
             switch(severity) {
-                case Constants.VALID_LOG_SEVERITIES.LOG:
-                    ui.notifications.log(formattedMessage);
+                case Constants.LOG_SEVERITIES.LOG:
+                    ui.notifications.log(formattedMessage, ...args);
                     break;
-                case Constants.VALID_LOG_SEVERITIES.INFO:
-                    ui.notifications.info(formattedMessage);
+                case Constants.LOG_SEVERITIES.INFO:
+                    ui.notifications.info(formattedMessage, ...args);
                     break;
-                case Constants.VALID_LOG_SEVERITIES.WARNING:
-                    ui.notifications.warning(formattedMessage);
+                case Constants.LOG_SEVERITIES.WARNING:
+                    ui.notifications.warning(formattedMessage, ...args);
                     break;
-                case Constants.VALID_LOG_SEVERITIES.ERROR:
-                    ui.notifications.error(formattedMessage);
+                case Constants.LOG_SEVERITIES.ERROR:
+                    ui.notifications.error(formattedMessage, ...args);
                     break;
                 default:
                     console.error(`${Constants.MODULE.NAME} | Invalid Severity! ${type} message follows as a log`);
-                    ui.notifications.log(formattedMessage);
+                    ui.notifications.log(formattedMessage, ...args);
             }
             break;
         default:
             console.error(`${Constants.MODULE.NAME} | Invalid type! Message follows as a console log`);
-            console.log(formattedMessage);
+            console.log(formattedMessage, ...args);
     }
 }

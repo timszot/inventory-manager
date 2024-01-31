@@ -1,6 +1,18 @@
 {
     "SZOTSKI_INV_MANAGER": {
         "SETTINGS": {
+            "ARMOR": {
+                "NAME": "Armor Compendium",
+                "SETTING_HINT": "Name of the compendium which contains all possible armor."
+            },
+            "MAGIC_ITEM": {
+                "NAME": "Wonderous Item Compendium",
+                "SETTING_HINT": "Name of the compendium which contains all possible magic items."
+            },
+            "MUNDANE": {
+                "NAME": "Mundane Item Compendium",
+                "SETTING_HINT": "Select compendium that contains mundane or non-magic items."
+            },
             "POTION": {
                 "NAME": "Potion Compendium",
                 "SETTING_HINT": "Name of the compendium which contains all possible potions."
@@ -9,25 +21,31 @@
                 "NAME": "Spell Compendium",
                 "SETTING_HINT": "Name of the compendium which contains all possible spells."
             },
-            "MAGIC_ITEM": {
-                "NAME": "Wonderous Item Compendium",
-                "SETTING_HINT": "Name of the compendium which contains all possible magic items."
-            },
-            "ARMOR": {
-                "NAME": "Armor Compendium",
-                "SETTING_HINT": "Name of the compendium which contains all possible armor."
-            },
             "WEAPON": {
                 "NAME": "Weapon Compendium",
                 "SETTING_HINT": "Name of the compendium which contains all possible weapons."
-            },
-            "MUNDANE": {
-                "NAME": "Mundane Item Compendium",
-                "SETTING_HINT": "Select compendium that contains mundane or non-magic items."
             }
         },
         "UI": {
-            "BUTTON_TITLE": "Szotski's Item Emporium"
+            "BUTTONS": {
+                "ADD_EMPORIUM": "Create a new Emporium",
+                "DELETE_EMPORIUM_TOOLTIP": "Delete Emporium",
+                "EDIT_EMPORIUM_TOOLTIP": "Edit Emporium",
+                "EMPORIUM_LIST": "Emporiums",
+                "EMPORIUM_LIST_TOOLTIP": "Open Item Emporium List",
+                "FIND_LOOT": "Find Loot",
+                "FIND_LOOT_TOOLTIP": "Open Encounter Loot Generator",
+                "SAVE_EMPORIUM": "Save Emporium"
+            },
+            "CONFIRMS": {
+                "DELETE_EMPORIUM": {
+                    "CONTENT": "Are you sure you want to delete this Emporium? This action cannot be undone.",
+                    "TITLE": "Confirm Deletion"
+                }
+            },
+            "DEFAULT_COLLECTION_NAME": "Enter a name for your collection",
+            "EMPORIUM_GENERATOR_TITLE": "Emporium Generator",
+            "EMPORIUM_LIST_TITLE": "Emporium List"
         }
     }
 }

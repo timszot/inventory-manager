@@ -1,4 +1,4 @@
-import { Constants } from "../values.js";
+import { Constants } from "../constants.js";
 import { log } from "./logging.js";
 
 /**
@@ -8,8 +8,8 @@ import { log } from "./logging.js";
  * @returns {Object} List of compendium names mapped to their ids
  */
 export function getCompendiumsOfType(compendiumType) {
-    if (!Object.values(Constants.VALID_FOUNDRY_COMPENDIUM_TYPES).includes(compendiumType)) {
-        log(Constants.VALID_LOG_TYPES.UI, Constants.VALID_LOG_SEVERITIES.ERROR, `Unsupported compendium type: ${compendiumType}`);
+    if (!Object.values(Constants.FOUNDRY_COMPENDIUM_TYPES).includes(compendiumType)) {
+        log(Constants.LOG_TYPES.UI, Constants.LOG_SEVERITIES.ERROR, `Unsupported compendium type: ${compendiumType}`);
     }
 
     let packsToReturn = {};
