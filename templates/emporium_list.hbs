@@ -1,0 +1,18 @@
+<form>
+    <ul class="item-emporium flexcol">
+        {{#each itemCollections}}
+            <li class="flexrow" data-item-collection-id="{{id}}">
+                <div class="collection-name">{{name}}</div>
+                <button type="button" title="{{localize "SZOTSKI_INV_MANAGER.UI.BUTTONS.EDIT_EMPORIUM_TOOLTIP"}}" data-action="edit-emporium" class="interface-button flex0">
+                    <i class="fas fa-pencil"></i>
+                </button>
+                <button type="button" title="{{localize "SZOTSKI_INV_MANAGER.UI.BUTTONS.DELETE_EMPORIUM_TOOLTIP"}}" data-action="delete-emporium" class="interface-button flex0">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </li>
+        {{/each}}
+    </ul>
+    <button type="button" data-action="new-emporium">
+        <i class="interface-button fas fa-plus"></i> {{localize "SZOTSKI_INV_MANAGER.UI.BUTTONS.ADD_EMPORIUM"}}
+    </button>
+</form>

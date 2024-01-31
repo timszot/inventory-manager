@@ -1,7 +1,7 @@
 {
     "id": "item-emporium",
     "title": "Szotski's Item Emporium",
-    "description": "Manage your DnD5e shop and loot inventories with this simple and powerful module.",
+    "description": "Manage your shop inventories and generate random encounter loot with this simple and powerful module.",
     "authors": [
         {
             "name": "Tim 'Szotski' Szot"
@@ -11,9 +11,6 @@
     "compatibility": {
         "minimum": "11",
         "verified": "11"
-    },
-    "relationships": {
-        "id": "dnd5e"
     },
     "languages": [
         {
