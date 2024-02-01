@@ -1,8 +1,10 @@
 <form>
-    <div class="item-emporium" data-item-collection-id="{{id}}"> 
-        <input type="text" id="{{id}}.name" value="{{name}}" name="{{id}}.name" data-dtype="String" />
-        <button type="button" data-action="save-emporium">
-            <i class="fas fa-save"></i> {{localize "SZOTSKI_INV_MANAGER.UI.BUTTONS.SAVE_EMPORIUM"}}
-        </button>
+    <div class="item-emporium" data-item-collection-id="{{id}}" data-user-id="{{userId}}"> 
+        <input type="text" label="Name" id="{{id}}.name" placeholder="{{localize "SZOTSKI_INV_MANAGER.UI.DEFAULT_COLLECTION_NAME"}}" value="{{name}}" name="{{id}}.name" data-dtype="String" />
+        <div class="flexrow">
+            <button type="button" data-action="save-emporium">
+                <i class="fas fa-save"></i> {{localize "SZOTSKI_INV_MANAGER.UI.BUTTONS.SAVE_EMPORIUM"}}
+            </button>
+        </div>
     </div>
 </form>
