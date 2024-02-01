@@ -67,9 +67,15 @@ export class EmporiumGenerator extends FormApplication {
      * @override
      */
     async _updateObject(event, formData) {
-        const itemCollectionId = $(event.currentTarget).parents('[data-item-collection-id]')?.data()?.itemCollectionId;
+        const currentTarget = $(event.currentTarget);
+        const itemCollectionId = currentTarget.parents('[data-item-collection-id]')?.data()?.itemCollectionId;
+
         let expandedData = foundry.utils.expandObject(formData);
+
         expandedData[itemCollectionId].id = itemCollectionId;
+        expandedData[itemCollectionId].userId = currentTarget.parents('[data-user-id]')?.data()?.userId;
+        expandedData[itemCollectionId].presets = {};
+
         log(Constants.LOG_TYPES.CONSOLE, Constants.LOG_SEVERITIES.INFO, 'emporium_generator:_updateObject', formData, expandedData);
 
         await ItemCollectionData.updateItemCollection(itemCollectionId, expandedData[itemCollectionId]);

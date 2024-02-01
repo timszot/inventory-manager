@@ -1,5 +1,4 @@
 import { Constants } from "./constants.js";
-import { log } from "./utils/logging.js";
 
 /**
  * A collection of items, such as a store inventory or a loot chest. Stored in the user data.
@@ -8,8 +7,8 @@ import { log } from "./utils/logging.js";
  * 
  * @property {string} id - A unique ID to identify this collection
  * @property {string} name - A nice name for the collection
- * @property {Array} compendiums - List of compendiums the items were generated from
- * @property {{{item_id: string, item_name: string, quantity: int, price: float}}} inventoryData - Item data that forms the inventory
+ * @property {Object} presets - Saved presets from the generator form
+ * @property {string} userId - User the collection belongs to
  */
 export class ItemCollectionData {
     /**
@@ -47,16 +46,15 @@ export class ItemCollectionData {
      * Create a new item collection for a specified user.
      * 
      * @param {string} userId - User the collection belongs to
+     * @param {string} id - random Id
      * @param {string} name - Nice name of the collection
-     * @param {Array} compendiums - Compendiums inventory was generated from
-     * @param {{{item_id: string, item_name: string, item_compendium: string, quantity: int, price: float}}} inventoryData - Item data that forms the inventory
+     * @param {Object} presets - Saved presets from the generator form
      */
-    static createItemCollection(userId, id, name, compendiums, inventoryData) {
+    static createItemCollection(userId, id, name, presets) {
         const newItemCollection = {
             id,
             name,
-            compendiums,
-            inventoryData,
+            presets,
             userId
         };
         const newItemCollections = {
@@ -81,7 +79,6 @@ export class ItemCollectionData {
             [`-=${itemCollectionId}`]: null
         }
         const relevantCollection = this.allItemCollections[itemCollectionId];
-        log(Constants.LOG_TYPES.CONSOLE, Constants.LOG_SEVERITIES.INFO, 'Deleting item collection:', {itemCollectionId, relevantCollection});
 
         return game.users.get(relevantCollection.userId)?.setFlag(Constants.MODULE.ID, Constants.MODULE.FLAGS.ITEM_COLLECTIONS, keyDeletion);
     }

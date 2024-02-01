@@ -44,7 +44,7 @@ export class EmporiumList extends FormApplication {
             case 'new-emporium': {
                 const id = foundry.utils.randomID(16);
                 
-                await ItemCollectionData.createItemCollection(game.userId, id, 'Enter a name for your collection', [], {});
+                await ItemCollectionData.createItemCollection(game.userId, id, '', {});
                 
                 ItemEmporium.emporiumGenerator.render(true, {userId: game.userId, itemCollectionId: id});
                 this.render();
